@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to BMS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="headline">numeno ... täg BMS</h1>
+    </div>
+
+    <script>
+        function calculateTuesdaysUntil(targetDate) {
+            const today = new Date();
+            let tuesdaysCount = 0;
+            let currentDate = new Date(today);
+
+            while (currentDate <= targetDate) {
+                if (currentDate.getDay() === 2) { // 2 represents Tuesday
+                    tuesdaysCount++;
+                }
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            return tuesdaysCount;
+        }
+
+        const targetDate = new Date('2025-06-30');
+        let tuesdaysUntil = calculateTuesdaysUntil(targetDate);
+        tuesdaysUntil -= 9; // Subtract 10 from the count
+
+        document.getElementById('headline').textContent = `numeno ${tuesdaysUntil} täg BMS`;
+    </script>
+</body>
+</html>
